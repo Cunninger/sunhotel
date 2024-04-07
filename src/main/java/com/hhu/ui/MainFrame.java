@@ -20,7 +20,7 @@ public class MainFrame extends MyJFrame {
         // 计算窗口位置和大小
         width = 1020;
         height = 740;
-        // TODO new   Windows 对象
+        // TODO 我这里是直接new   Windows 对象,不知道还是把Windows设为静态类？
         x = new Windows().x - width / 2;
         y = new Windows().y - height / 2;
         //定义菜单项
@@ -57,7 +57,7 @@ public class MainFrame extends MyJFrame {
     public void buildToolBar(){
         jToolBar = new JToolBar();
         for(String[] toolbar : toolbars.values()){
-            // TODO new Windows对象
+            // TODO 我这里是直接new   Windows 对象,不知道还是把Windows设为静态类？
             MyJButton myJButton = new MyJButton(toolbar[0], new Windows().IMGPATH+toolbar[1]);
             jToolBar.add(myJButton);
         }

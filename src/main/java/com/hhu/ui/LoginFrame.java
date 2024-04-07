@@ -87,6 +87,7 @@ public class LoginFrame extends MyJFrame{
                    Record record = new Record();
                    record.setTime(DateUtils.date2String(new Date()));
                    record.setOperator(userId);
+                   record.setBrief("这个好像要设置，不然会空");
                    record.setContent(userId + "登录系统");
                    recordService.save(record);
 
