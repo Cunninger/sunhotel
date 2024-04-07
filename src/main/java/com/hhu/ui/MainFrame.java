@@ -58,6 +58,7 @@ public class MainFrame extends MyJFrame {
         jToolBar = new JToolBar();
         for(String[] toolbar : toolbars.values()){
             // TODO 我这里是直接new   Windows 对象,不知道还是把Windows设为静态类？
+            //
             MyJButton myJButton = new MyJButton(toolbar[0], new Windows().IMGPATH+toolbar[1]);
             jToolBar.add(myJButton);
         }
