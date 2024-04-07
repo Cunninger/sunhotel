@@ -1,13 +1,13 @@
 package com.hhu.service;
 
 import com.hhu.domain.entity.Pwd;
-import com.hhu.service.serviceImpl.PwdserviceImpl;
+import com.hhu.service.Impl.PwdServiceImpl;
 import org.junit.Test;
 
 import java.util.List;
 
 public class PwdServiceTest {
-    private com.hhu.service.Pwdservice pwdservice=new PwdserviceImpl();
+    private PwdService pwdservice=new PwdServiceImpl();
     @Test
     public void save()throws  Exception{
         Pwd pwd=new Pwd("my","123456","测试员");

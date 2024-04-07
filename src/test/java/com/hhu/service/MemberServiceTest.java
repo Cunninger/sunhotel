@@ -1,13 +1,12 @@
 //package com.hhu.service;
 package com.hhu.service;
 import com.hhu.domain.entity.Member;
-import com.hhu.service.serviceImpl.*;
 import org.junit.Test;
 
 import java.util.List;
 
 public class MemberServiceTest {
-    private com.hhu.service.MemberService memberService=new com.hhu.service.serviceImpl.MemberServiceImpl();
+    private com.hhu.service.MemberService memberService=new com.hhu.service.Impl.MemberServiceImpl();
 
     /**
      * 添加

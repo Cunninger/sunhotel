@@ -1,10 +1,9 @@
-package com.hhu.service.serviceImpl;
+package com.hhu.service.Impl;
 
 import com.hhu.dao.MemberDao;
 import com.hhu.dao.impl.MemberDaoImpl;
 import com.hhu.domain.entity.Member;
 import com.hhu.service.MemberService;
-import com.hhu.util.JDBCUtil;
 
 import java.util.List;
 

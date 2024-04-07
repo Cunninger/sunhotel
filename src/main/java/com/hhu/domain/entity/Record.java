@@ -1,15 +1,20 @@
 package com.hhu.domain.entity;
-import java.util.Date;
-public class Recod {
-    private Long pk=System.currentTimeMillis();//序列号
-    private String time;//时间
-    private String operator;//操作人
-    private String brief;//简介
-    private String content;//内容
-    private Integer delmark;
-    public Recod() {
-    }
-    public Recod(String time, String operator, String brief, String content) {
+
+import com.hhu.util.JDBCUtil;
+
+import static com.hhu.util.JDBCUtil.*;
+
+public class Record {
+    private Long pk = System.currentTimeMillis();
+    private String time;
+    private String operator;
+    private String brief;
+    private String content;
+    private Integer delmark = 0;
+
+    public Record(){}
+
+    public Record(String time, String operator, String brief, String content) {
         this.time = time;
         this.operator = operator;
         this.brief = brief;
@@ -62,5 +67,12 @@ public class Recod {
 
     public void setDelmark(Integer delmark) {
         this.delmark = delmark;
+    }
+
+    public void insert(Record record) {
+        String sql = "insert into record values(?,?,?,?,?,?,?)";
+        JDBCUtil.update(sql, record.getPk(), record.getTime(), record.getOperator(), record.getBrief(), record.getContent(), record.getDelmark());
+
+
     }
 }

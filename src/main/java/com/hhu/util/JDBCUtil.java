@@ -104,7 +104,7 @@ public class JDBCUtil {
      * @return 影响行数，如果为0则表示更新失败
      * @throws Exception
      */
-    public static int updata(String sql, Object... params) {//更新操作
+    public static int update(String sql, Object... params) {//更新操作
         try {
             ps =  conn.prepareStatement(sql);//预编译
             for (int i = 0; i < params.length; i++) {

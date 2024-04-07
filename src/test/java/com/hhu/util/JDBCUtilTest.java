@@ -2,8 +2,6 @@ package com.hhu.util;
 
 import org.junit.Test;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class JDBCUtilTest {
@@ -26,7 +24,7 @@ public class JDBCUtilTest {
     @Test
     public void test3()throws Exception {
         String sql = "insert into member values(?,?,?,?,?,?,?,?,?,?,?)";
-        int cnt = JDBCUtil.updata(sql, "6020221840","123","雷紫嫣","女","123","4648656","家里蹲",null,1,null,null);
+        int cnt = JDBCUtil.update(sql, "6020221840","123","雷紫嫣","女","123","4648656","家里蹲",null,1,null,null);
         if (cnt > 0)
             System.out.println("连接成功：" + cnt);
         else

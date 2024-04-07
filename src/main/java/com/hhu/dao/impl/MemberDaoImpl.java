@@ -12,26 +12,26 @@ public class MemberDaoImpl implements MemberDao {
     @Override
     public void insert(Member member) throws Exception {
         String sql="insert into member values(?,?,?,?,?,?,?,?,?)";
-        JDBCUtil.updata(sql,member.getPk(),member.getmId(),member.getmName(),member.getSex(),member.getZjNo(),member.getmTel(),member.getAddress(),member.getRemark(),member.getDelmark());
+        JDBCUtil.update(sql,member.getPk(),member.getmId(),member.getmName(),member.getSex(),member.getZjNo(),member.getmTel(),member.getAddress(),member.getRemark(),member.getDelmark());
     }
 
     @Override
     public void update(Member member) throws Exception {
         String sql="update member set m_id=?,m_name=?,sex=?,zj_no=?,m_tel=?,address=?,remark=?,delmark=? where pk=?";
-        JDBCUtil.updata(sql,member.getmId(),member.getmName(),member.getSex(),member.getZjNo(),member.getmTel(),member.getAddress(),member.getRemark(),member.getDelmark(),member.getPk());
+        JDBCUtil.update(sql,member.getmId(),member.getmName(),member.getSex(),member.getZjNo(),member.getmTel(),member.getAddress(),member.getRemark(),member.getDelmark(),member.getPk());
     }
 
     @Override
     public void delete(Long pk) throws Exception {
         String sql="update member set delmark=1 where pk=?";
-        JDBCUtil.updata(sql,pk);
+        JDBCUtil.update(sql,pk);
     }
 
     @Override
     public void batchDelete(Long[] pks) throws Exception {
         String sql="update member set delmark=1 where pk=?";
         for(Long pk:pks)
-        JDBCUtil.updata(sql,pk);
+        JDBCUtil.update(sql,pk);
     }
 
     @Override

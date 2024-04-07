@@ -10,27 +10,27 @@ public class PwdDaoImpl implements PwdDao{
     @Override
     public void insert(Pwd pwd) throws Exception {
         String sql = "insert into pwd values(?,?,?,?,?)";
-        JDBCUtil.updata(sql, pwd.getPk(), pwd.getUserId(), pwd.getPwd(), pwd.getPuis(), pwd.getDelmark());
+        JDBCUtil.update(sql, pwd.getPk(), pwd.getUserId(), pwd.getPwd(), pwd.getPuis(), pwd.getDelmark());
 
     }
 
     @Override
     public void update(Pwd pwd) throws Exception {
         String sql = "update pwd set userId=?,pwd=?,puis=?,delmark=? where pk=?";
-        JDBCUtil.updata(sql, pwd.getUserId(), pwd.getPwd(), pwd.getPuis(), pwd.getDelmark(), pwd.getPk());
+        JDBCUtil.update(sql, pwd.getUserId(), pwd.getPwd(), pwd.getPuis(), pwd.getDelmark(), pwd.getPk());
     }
 
     @Override
     public void delete(Long pk) throws Exception {
         String sql = "update  pwd set delmark=1 where pk=?";
-        JDBCUtil.updata(sql, pk);
+        JDBCUtil.update(sql, pk);
     }
 
     @Override
     public void batchDelete(Long[] pks) throws Exception {
         String sql = "update pwd set delmark=1 where pk=?";
         for (Long pk : pks) {
-            JDBCUtil.updata(sql, pk);
+            JDBCUtil.update(sql, pk);
         }
     }
 
