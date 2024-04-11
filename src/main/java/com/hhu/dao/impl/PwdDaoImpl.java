@@ -53,8 +53,8 @@ public class PwdDaoImpl implements PwdDao{
 
     @Override
     public List<Pwd> selectBySelective(Pwd pwd) throws Exception {
-            String sql="select * from pwd where  userId=? ";
-            ResultSet rs = JDBCUtil.query(sql,  pwd.getUserId());
+            String sql="select * from pwd where  userId=? and pwd=? ";
+            ResultSet rs = JDBCUtil.query(sql,  pwd.getUserId(),pwd.getPwd());
             List<Pwd> list = new ArrayList<>();
             while (rs.next()) {
                 Pwd pwd1 = new Pwd();
@@ -72,6 +72,22 @@ public class PwdDaoImpl implements PwdDao{
     public Pwd selectById(Long pk) throws Exception {
         String sql = "select * from pwd where pk=?";
         ResultSet rs = JDBCUtil.query(sql, pk);
+        Pwd pwd1 = new Pwd();
+        while (rs.next()) {
+            pwd1.setPk(rs.getLong(1));
+            pwd1.setUserId(rs.getString(2));
+            pwd1.setPwd(rs.getString(3));
+            pwd1.setPuis(rs.getString(4));
+            pwd1.setDelmark(rs.getInt(5));
+        }
+        return pwd1;
+    }
+
+
+    @Override
+    public Pwd selectByUserId(String userId) throws Exception {
+        String sql = "select * from pwd where userId=?";
+        ResultSet rs = JDBCUtil.query(sql, userId);
         Pwd pwd1 = new Pwd();
         while (rs.next()) {
             pwd1.setPk(rs.getLong(1));

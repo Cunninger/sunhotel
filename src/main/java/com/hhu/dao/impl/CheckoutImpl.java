@@ -39,4 +39,10 @@ public class CheckoutImpl implements CheckoutDao {
     public CheckoutDao selectById(Long pk) throws Exception {
         return null;
     }
+
+    @Override
+    public CheckoutDao selectByUserId(String userId) throws Exception {
+        return null;
+    }
+
 }

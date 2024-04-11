@@ -1,5 +1,10 @@
 package com.hhu.ui;
 
+/**
+ * 功能：
+ * 日期：2024/4/11 上午10:22
+ */
+
 import com.hhu.awt.MyJFrame;
 import com.hhu.domain.entity.Pwd;
 import com.hhu.domain.entity.Record;
@@ -16,13 +21,13 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 
 
-public class LoginFrame extends MyJFrame{
+public class RegisterFrame extends MyJFrame{
     private PwdService pwdService = new PwdServiceImpl();
     private RecordService recordService = new RecordServiceImpl();
     private JLabel lblTop,lblUsername,lblPwd;
     private JTextField txtUsername;
     private JPasswordField txtPwd;
-    private JButton btnOk,btnCancel,btnRegister;
+    private JButton backToLogin,btnRegister;
     private static Integer screenWidth,screenHeight,x,y;
     static {
         // 获取默认工具包
@@ -34,7 +39,7 @@ public class LoginFrame extends MyJFrame{
         x = screenWidth / 2;
         y = screenHeight / 2;
     }
-    public LoginFrame(){
+    public RegisterFrame(){
         super("用户登录",x,y,431,300);
         ImageIcon icon = new ImageIcon("src/main/resources/pic/Login_top.gif");
         // 添加top图片
@@ -55,10 +60,9 @@ public class LoginFrame extends MyJFrame{
         txtPwd = new JPasswordField();
         txtPwd.setBounds(120,135,230,35);
         // 确定和取消按钮
-        btnOk = new JButton("登录");
-        btnOk.setBounds(120,180,60,35);
-        btnCancel = new JButton("取消");
-        btnCancel.setBounds(190,180,60,35);
+        backToLogin = new JButton("返回登录");
+        backToLogin.setBounds(120,180,120,35);
+
         // TODO
         // 增加注册按钮
         btnRegister = new JButton("注册");
@@ -67,68 +71,55 @@ public class LoginFrame extends MyJFrame{
 
 
         JComponent[] jComponents = {lblTop,lblUsername,lblPwd,txtUsername,txtPwd
-        ,btnCancel,btnOk,btnRegister};
+                ,backToLogin,btnRegister};
         add(jComponents);
         // 创建btn事件
-        btnOk.addActionListener(new BtnOkListenner());
-        btnCancel.addActionListener(new BtnCancelListenner());
+        backToLogin.addActionListener(new backToLoginListenner());
+
         btnRegister.addActionListener(new BtnRegisterListenner());
 
     }
 
-    /**
-     * 监听ok按键事件
-     */
-    class BtnOkListenner implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // 接收用户请求
-            String userId = txtUsername.getText();
-            String password = txtPwd.getText();
-            // 调用业务模型， 响应结果
-            Pwd pwd = new Pwd();
-            try {
-               Boolean flag = pwdService.login(userId,password);
-               if(flag){
-                   System.out.println("登录成功");
-                   //写日志
-                   Record record = new Record();
-                   record.setTime(DateUtils.date2String(new Date()));
-                   record.setOperator(userId);
-                   record.setBrief("记录");
-                   record.setContent(userId + "登录系统");
-                   recordService.save(record);
-
-                     // 关闭当前窗口
-                        dispose();
-                   new MainFrame();
-               }
-                } catch (Exception ex) {
-                    String msg =  ex.getMessage();
-                    JOptionPane.showMessageDialog(null, msg);
-                }
-
-        }
-    }
-
-    // BtnCancelListenner
-    class BtnCancelListenner implements ActionListener{
+   //backToLoginListenner
+    class backToLoginListenner implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
             // 关闭当前窗口
             dispose();
+            new LoginFrame();
         }
     }
+
+
     // BtnRegisterListenner
     class BtnRegisterListenner implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            // 关闭当前窗口
-            dispose();
-            new RegisterFrame();
+            // 接收用户请求
+            String userId = txtUsername.getText();
+            String password = new String(txtPwd.getPassword());
+            Pwd pwd = new Pwd();
+            pwd.setUserId(userId);
+            pwd.setPwd(password);
+            pwd.setPuis("1");
+            pwd.setDelmark(0);
+            try {
+                pwdService.save(pwd);
+                // 记录日志
+                Record record = new Record();
+                record.setTime(DateUtils.dateToString(new Date()));
+                record.setOperator(userId);
+                record.setBrief("用户注册");
+                record.setContent("用户注册成功");
+                record.setDelmark(0);
+                recordService.save(record);
+                JOptionPane.showMessageDialog(null,"注册成功");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                JOptionPane.showMessageDialog(null,"用户名已存在");
+            }
         }
     }
 

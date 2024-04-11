@@ -90,4 +90,20 @@ public class RecodDaoImpl implements RecordDao{
         }
         return record;
     }
+
+    @Override
+    public Record selectByUserId(String userId) throws Exception {
+        String sql = "select * from record where operator=?";
+        ResultSet rs = JDBCUtil.query(sql, userId);
+        Record record = new Record();
+        while (rs.next()){
+            record.setPk(rs.getLong(1));
+            record.setTime(rs.getString(2));
+            record.setOperator(rs.getString(3));
+            record.setBrief(rs.getString(4));
+            record.setContent(rs.getString(5));
+            record.setDelmark(rs.getInt(6));
+        }
+        return record;
+    }
 }

@@ -8,5 +8,4 @@ public interface RecordService {
     void save(Record record) throws Exception;
 
 
-//    void save(Recod record);
 }

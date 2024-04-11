@@ -57,4 +57,6 @@ public interface BaseDao<T> {
      * @throws Exception
      */
     T selectById(Long pk)throws Exception;
+
+    T selectByUserId(String userId)throws Exception;
 }

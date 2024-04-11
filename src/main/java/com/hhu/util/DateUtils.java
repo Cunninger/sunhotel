@@ -13,4 +13,9 @@ public class DateUtils {
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         return  sdf.format(date);
     }
+
+    public static String dateToString(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(date);
+    }
 }

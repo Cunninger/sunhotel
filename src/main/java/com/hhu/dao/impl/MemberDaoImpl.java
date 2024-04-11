@@ -103,4 +103,23 @@ public class MemberDaoImpl implements MemberDao {
 
         return m;
     }
+
+    @Override
+    public Member selectByUserId(String userId) throws Exception {
+        String sql="select * from member where m_id=?";
+        ResultSet rs=JDBCUtil.query(sql,userId);
+        Member m=new Member();
+        while (rs.next()){
+            m.setPk(rs.getString(1));
+            m.setmId(rs.getString(2));
+            m.setmName(rs.getString(3));
+            m.setSex(rs.getString(4));
+            m.setZjNo(rs.getString(5));
+            m.setmTel(rs.getString(6));
+            m.setAddress(rs.getString(7));
+            m.setRemark(rs.getString(8));
+            m.setDelmark(rs.getInt(9));
+        }
+        return m;
+    }
 }
