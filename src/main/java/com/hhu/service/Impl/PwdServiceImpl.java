@@ -13,8 +13,9 @@ public class PwdServiceImpl implements PwdService {
     public void save(Pwd pwd) throws Exception {
         // 如果用户名已经被注册，则抛出异常
 
-        Pwd pwds = pwdDao.selectByUserId(pwd.getUserId());
-        if (pwds.getUserId() != null) {
+
+        Pwd pwd1 = pwdDao.selectByUserId(pwd.getUserId());
+        if (pwd1.getUserId() != null) {
             throw new Exception("用户名已经被注册");
         }
         pwdDao.insert(pwd);
@@ -34,17 +35,29 @@ public class PwdServiceImpl implements PwdService {
 
     @Override
     public Boolean login(String userId, String password) throws Exception {
-        Pwd pwd = new Pwd();
-        pwd.setUserId(userId);
-        pwd.setPwd(password);
-        List<Pwd> pwds = pwdDao.selectBySelective(pwd);
-
-        if (pwds.size() == 0) {
-            // 抛出异常
-            throw new Exception("用户名或密码错误");
-
+//        Pwd pwd = new Pwd();
+//        pwd.setUserId(userId);
+//        pwd.setPwd(password);
+//        List<Pwd> pwds = pwdDao.selectBySelective(pwd);
+//
+//        if (pwds.size() == 0) {
+//            // 抛出异常
+//            throw new Exception("用户名或密码错误");
+//
+//        } else {
+//            return true;
+//        }
+        // 如果用户名匹配不上输出用户名错误、
+        //  如果用户名匹配上但是密码不匹配输出密码错误
+        Pwd pwd = pwdDao.selectByUserId(userId);
+        if (pwd.getUserId() == null) {
+            throw new Exception("用户名错误");
         } else {
-            return true;
+            if (pwd.getPwd().equals(password)) {
+                return true;
+            } else {
+                throw new Exception("密码错误");
+            }
         }
     }
 }

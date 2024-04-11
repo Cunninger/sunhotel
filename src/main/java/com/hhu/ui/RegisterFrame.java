@@ -112,7 +112,7 @@ public class RegisterFrame extends MyJFrame{
                 record.setTime(DateUtils.dateToString(new Date()));
                 record.setOperator(userId);
                 record.setBrief("用户注册");
-                record.setContent("用户注册成功");
+                record.setContent(pwd.getUserId()+"用户注册成功");
                 record.setDelmark(0);
                 recordService.save(record);
                 JOptionPane.showMessageDialog(null,"注册成功");
