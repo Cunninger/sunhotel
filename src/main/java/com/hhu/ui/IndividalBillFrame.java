@@ -41,6 +41,8 @@ public class IndividalBillFrame extends JFrame  implements ActionListener {
         setSize(595,650);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(null);
+        // 修改颜色
+        getContentPane().setBackground(new Color(245, 255, 255));
 
         font = new Font("宋体",Font.PLAIN,18);
 
@@ -119,7 +121,7 @@ public class IndividalBillFrame extends JFrame  implements ActionListener {
 
         createJLabel("实际单价:",140,230,54,30);
 
-        actualPrice = new JLabel("¥100.0");
+        actualPrice = new JLabel("￥1000.0");
         actualPrice.setBounds(195,230,54,30);
         add(actualPrice);
 

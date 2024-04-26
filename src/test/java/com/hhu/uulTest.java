@@ -12,13 +12,12 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-public class LiveinServiceImplTest {
+public class uulTest {
 
     @Test
     public void testInsert() throws Exception {
-        // 创建一个新的Livein对象并设置其属性
         Livein livein = new Livein();
-        livein.setPk(BigDecimal.valueOf(2L));
+        livein.setPk(BigDecimal.valueOf(8L));
         livein.setInNo("IN123");
         livein.setrNo("R123");
         livein.setrTypeId("RT123");
