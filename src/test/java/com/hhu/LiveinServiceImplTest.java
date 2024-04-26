@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class LiveinServiceImplTest {
 
@@ -17,7 +18,7 @@ public class LiveinServiceImplTest {
     public void testInsert() throws Exception {
         // 创建一个新的Livein对象并设置其属性
         Livein livein = new Livein();
-        livein.setPk(BigDecimal.valueOf(1L));
+        livein.setPk(BigDecimal.valueOf(2L));
         livein.setInNo("IN123");
         livein.setrNo("R123");
         livein.setrTypeId("RT123");
@@ -32,7 +33,7 @@ public class LiveinServiceImplTest {
         livein.setAddress("A123");
         livein.setRenshu(123);
         // 设置时间为当前时间
-        livein.setInTime(new Date());
+        livein.setInTime(String.valueOf(new Date()));
         livein.setAccount(123.0);
         livein.setDays(123);
         livein.setForegift(123.0);
@@ -56,7 +57,7 @@ public class LiveinServiceImplTest {
         // 创建一个新的Livein对象并设置其属性
         Livein livein = new Livein();
         livein.setPk(BigDecimal.valueOf(1L));
-        livein.setInNo("IN123");
+        livein.setInNo("饿的23");
         livein.setrNo("R123");
         livein.setrTypeId("RT123");
         livein.setMainRoom("MR123");
@@ -70,7 +71,7 @@ public class LiveinServiceImplTest {
         livein.setAddress("A123");
         livein.setRenshu(123);
         // 设置时间为当前时间
-        livein.setInTime(new Date());
+        livein.setInTime(String.valueOf(new Date()));
         livein.setAccount(123.0);
         livein.setDays(123);
         livein.setForegift(123.0);
@@ -106,14 +107,19 @@ public class LiveinServiceImplTest {
     public void testSelectByPk() throws Exception {
         // 创建LiveinServiceImpl对象并调用selectByPk方法
         LiveinServiceImpl liveinService = new LiveinServiceImpl();
-        liveinService.selectByPk(1L);
+        Livein livein = liveinService.selectByPk(1L);
+        System.out.println(livein);
     }
 
     @Test
     public void testSelectAll() throws Exception {
         // 创建LiveinServiceImpl对象并调用selectAll方法
         LiveinServiceImpl liveinService = new LiveinServiceImpl();
-        liveinService.selectAll();
+        List<Livein> liveins = liveinService.selectAll();
+        for(var i:liveins){
+            System.out.println(i);
+        }
+
     }
 
 

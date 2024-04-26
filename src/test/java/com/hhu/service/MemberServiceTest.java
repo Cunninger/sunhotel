@@ -14,7 +14,7 @@ public class MemberServiceTest {
      */
     @Test
     public void insert() throws Exception {
-        Member member=new Member("6020221841","2342","李静芸","女","5","5","5",null);
+        Member member=new Member("6020221841","2342","1212","女","5","5","5",null);
         memberService.save(member);
     }
 
@@ -24,7 +24,7 @@ public class MemberServiceTest {
      */
     @Test
     public void update()throws Exception{
-        Member member=new Member("6020221841","4321","李静芸","女","5","5","6",null);
+        Member member=new Member("6020221841","4321","1212","女","5","5","6",null);
         memberService.update(member);
     }
 
@@ -46,7 +46,7 @@ public class MemberServiceTest {
     @Test
     public void selectByName() throws Exception {
         Member member=new Member();
-        member.setmName("李静芸");
+        member.setmName("1212");
        List<Member> list= memberService.findByMName(member);
        for (Member member1:list){
            System.out.println(member1);

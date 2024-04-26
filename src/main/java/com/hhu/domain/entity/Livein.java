@@ -1,7 +1,6 @@
 package com.hhu.domain.entity;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 public class Livein {
     private BigDecimal pk= BigDecimal.valueOf(System.currentTimeMillis());
@@ -21,7 +20,7 @@ public class Livein {
     private String zjNo;
     private String address;
     private Integer renshu;
-    private Date inTime;
+    private String inTime;
     private Double account;
     private Integer days;
     private Double foregift;
@@ -174,12 +173,12 @@ public class Livein {
         this.renshu = renshu;
     }
 
-    public Date getInTime() {
+    public String getInTime() {
         return inTime;
     }
 
-    public void setInTime(Date inTime) {
-        this.inTime = inTime;
+    public void setInTime(String inTime) {
+        this.inTime = String.valueOf(inTime);
     }
 
     public Double getAccount() {
@@ -268,6 +267,38 @@ public class Livein {
 
     public void setDelmark(Integer delmark) {
         this.delmark = delmark;
+    }
+    // toString
+    @Override
+    public String toString() {
+        return "Classname{" +
+                "pk=" + pk +
+                ", inNo='" + inNo + '\'' +
+                ", rNo='" + rNo + '\'' +
+                ", rTypeId='" + rTypeId + '\'' +
+                ", mainRoom='" + mainRoom + '\'' +
+                ", mainPk='" + mainPk + '\'' +
+                ", cTypeId='" + cTypeId + '\'' +
+                ", cName='" + cName + '\'' +
+                ", cJp='" + cJp + '\'' +
+                ", sex='" + sex + '\'' +
+                ", zjType='" + zjType + '\'' +
+                ", zjNo='" + zjNo + '\'' +
+                ", address='" + address + '\'' +
+                ", renshu=" + renshu +
+                ", inTime=" + inTime +
+                ", account=" + account +
+                ", days=" + days +
+                ", foregift=" + foregift +
+                ", remark='" + remark + '\'' +
+                ", mId='" + mId + '\'' +
+                ", chkNo='" + chkNo + '\'' +
+                ", chkTime='" + chkTime + '\'' +
+                ", userId='" + userId + '\'' +
+                ", statemark='" + statemark + '\'' +
+                ", cluemark=" + cluemark +
+                ", delmark=" + delmark +
+                '}';
     }
 
 }

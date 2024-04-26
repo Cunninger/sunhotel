@@ -39,7 +39,7 @@ public class LiveinDaoImpl implements LiveinDao {
                 " sex=?, zj_type=?, zj_no=?, address=?, " +
                 "renshu=?, in_time=?, account=?, days=?," +
                 " foregift=?, remark=?, m_id=?, chk_no=?, chk_time=?, " +
-                "user_id=?, state_mark=?, clu_mark=?, del_mark=? " +
+                "userid=?, statemark=?, cluemark=?, delmark=? " +
                 "where pk=?";
         JDBCUtil.update(sql, livein.getInNo(), livein.getrNo(), livein.getrTypeId(),
                 livein.getMainRoom(), livein.getMainPk(), livein.getcTypeId(), livein.getcName(), livein.getcJp(),
@@ -85,7 +85,7 @@ public class LiveinDaoImpl implements LiveinDao {
             livein.setZjNo(resultSet.getString("zj_no"));
             livein.setAddress(resultSet.getString("address"));
             livein.setRenshu(resultSet.getInt("renshu"));
-            livein.setInTime(resultSet.getDate("in_time"));
+            livein.setInTime(resultSet.getString("in_time"));
             livein.setAccount(resultSet.getDouble("account"));
             livein.setDays(resultSet.getInt("days"));
             livein.setForegift(resultSet.getDouble("foregift"));
@@ -93,10 +93,10 @@ public class LiveinDaoImpl implements LiveinDao {
             livein.setmId(resultSet.getString("m_id"));
             livein.setChkNo(resultSet.getString("chk_no"));
             livein.setChkTime(resultSet.getString("chk_time"));
-            livein.setUserId(resultSet.getString("user_id"));
-            livein.setStatemark(resultSet.getString("state_mark"));
-            livein.setCluemark(resultSet.getInt("clu_mark"));
-            livein.setDelmark(resultSet.getInt("del_mark"));
+            livein.setUserId(resultSet.getString("userid"));
+            livein.setStatemark(resultSet.getString("statemark"));
+            livein.setCluemark(resultSet.getInt("cluemark"));
+            livein.setDelmark(resultSet.getInt("delmark"));
             list.add(livein);
         }
         return list;
@@ -128,7 +128,7 @@ public class LiveinDaoImpl implements LiveinDao {
             livein.setZjNo(resultSet.getString("zj_no"));
             livein.setAddress(resultSet.getString("address"));
             livein.setRenshu(resultSet.getInt("renshu"));
-            livein.setInTime(resultSet.getDate("in_time"));
+            livein.setInTime(resultSet.getString("in_time"));
             livein.setAccount(resultSet.getDouble("account"));
             livein.setDays(resultSet.getInt("days"));
             livein.setForegift(resultSet.getDouble("foregift"));
@@ -136,10 +136,10 @@ public class LiveinDaoImpl implements LiveinDao {
             livein.setmId(resultSet.getString("m_id"));
             livein.setChkNo(resultSet.getString("chk_no"));
             livein.setChkTime(resultSet.getString("chk_time"));
-            livein.setUserId(resultSet.getString("user_id"));
-            livein.setStatemark(resultSet.getString("state_mark"));
-            livein.setCluemark(resultSet.getInt("clu_mark"));
-            livein.setDelmark(resultSet.getInt("del_mark"));
+            livein.setUserId(resultSet.getString("userid"));
+            livein.setStatemark(resultSet.getString("statemark"));
+            livein.setCluemark(resultSet.getInt("cluemark"));
+            livein.setDelmark(resultSet.getInt("delmark"));
 
         }
         return livein;

@@ -39,11 +39,10 @@ public class IndividalBillFrame extends JFrame  implements ActionListener {
         setTitle("散客开单");
         setIconImage(Toolkit.getDefaultToolkit().getImage(""));
         setSize(595,650);
-//        setSize(900,650);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(null);
 
-        font = new Font("微软雅黑",Font.PLAIN,18);
+        font = new Font("宋体",Font.PLAIN,18);
 
         JLabel topLabel = new JLabel("开单信息");
         topLabel.setFont(font);
