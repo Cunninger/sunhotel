@@ -57,19 +57,19 @@ public class IndividalBillFrame extends JFrame  implements ActionListener {
         roomType = createJLabelOfCenter(roomType,"房间类型:",200,40,190,25);
         roomPrice = createJLabelOfCenter(roomPrice,"预设单价:",390,40,190,25);
 
-        createJLabel("证件类型:",18,70,53,30);
 
+        createJLabel("证件类型:",18,70,54,30);
         idType = new JComboBox<>();
         idType.setBounds(70,70,80,25);
         add(idType);
 
-        createJLabel("证件编码:",182,70,53,30);
+        createJLabel("证件编码:",182,70,54,30);
 
         idCode = new JTextField();
         idCode.setBounds(239,70,160,25);
         add(idCode);
 
-        createJLabel("主客性别:",428,70,53,30);
+        createJLabel("主客性别:",428,70,54,30);
 
         guestSexType = new JComboBox<>();
         guestSexType.setBounds(483,70,80,25);
@@ -78,19 +78,19 @@ public class IndividalBillFrame extends JFrame  implements ActionListener {
 
         //-----------------------------------------------------------------------------
 
-        createJLabel("宾客类型:",18,110,53,30);
+        createJLabel("宾客类型:",18,110,54,30);
 
         guestType = new JComboBox<>();
         guestType.setBounds(73,110,80,25);
         add(guestType);
 
-        createJLabel("主客姓名:",182,110,53,30);
+        createJLabel("主客姓名:",182,110,54,30);
 
         guestName = new JTextField();
         guestName.setBounds(239,110,160,25);
         add(guestName);
 
-        createJLabel("宾客人数:",428,110,53,30);
+        createJLabel("宾客人数:",428,110,54,30);
 
         guestCount = new JTextField("1");
         guestCount.setBounds(483,110,80,25);
@@ -98,39 +98,39 @@ public class IndividalBillFrame extends JFrame  implements ActionListener {
 
         //-----------------------------------------------------------------------------
 
-        createJLabel("地址信息:",18,150,53,30);
+        createJLabel("地址信息:",18,150,54,30);
 
         addressInfo = new JTextField();
         addressInfo.setBounds(73,150,490,25);
         add(addressInfo);
 
-        createJLabel("备注信息:",18,190,53,30);
+        createJLabel("备注信息:",18,190,54,30);
 
         otherInfo = new JTextField();
         otherInfo.setBounds(73,190,490,25);
         add(otherInfo);
 
         //-----------------------------------------------------------------------------
-        createJLabel("折扣比例:",18,230,53,30);
+        createJLabel("折扣比例:",18,230,54,30);
 
         discount = new JLabel("10");
         discount.setBounds(73,230,40,30);
         add(discount);
 
 
-        createJLabel("实际单价:",140,230,53,30);
+        createJLabel("实际单价:",140,230,54,30);
 
         actualPrice = new JLabel("¥100.0");
-        actualPrice.setBounds(195,230,53,30);
+        actualPrice.setBounds(195,230,54,30);
         add(actualPrice);
 
-        createJLabel("预住天数:",270,230,53,30);
+        createJLabel("预住天数:",270,230,54,30);
 
         useRoomDays = new JTextField("1");
         useRoomDays.setBounds(325,230,60,30);
         add(useRoomDays);
 
-        createJLabel("实收押金:",420,230,53,30);
+        createJLabel("实收押金:",420,230,54,30);
 
         cashPledge = new JTextField("0.00");
         cashPledge.setBounds(480,230,80,30);
@@ -138,7 +138,7 @@ public class IndividalBillFrame extends JFrame  implements ActionListener {
 
         //-----------------------------------------------------------------------------
 
-        createJLabel("追加房间",18,280,53,30);
+        createJLabel("追加房间",18,280,54,30);
 
         JLabel jLabel13 = new JLabel("可供房间");
         jLabel13.setFont(font);

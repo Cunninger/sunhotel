@@ -66,7 +66,7 @@ public class RightTopPanel extends JPanel  {
     }
     public JPanel buildViewList(String roomTypeId) {
         java.util.List<RoomInfo> rooms = getRoomsByRoomType(roomTypeId);
-        int vRow = (int)Math.ceil(rooms.size() / 6);    //一行放6个button
+        int vRow = (int)Math.ceil((float)rooms.size()/ 6);    //一行放6个button
         //建立按键面板
         JPanel panelMain	= new JPanel(new GridLayout(vRow, 1, 5, 15));
         //设置默认背景色

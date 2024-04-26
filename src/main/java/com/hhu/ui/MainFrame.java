@@ -48,6 +48,7 @@ public class MainFrame extends MyJFrame {
         panelMain.add ("North", jToolBar);	//加入工具栏
         panelMain.add ("South", bott);			//加入窗口底端信息框
         panelMain.add ("Center", spaneMain);	//加入分割面板
+
         // 添加散客开单事件
         jToolBar.getComponent(0).addMouseListener(new MouseAdapter() {
             @Override

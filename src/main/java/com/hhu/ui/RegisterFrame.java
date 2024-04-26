@@ -44,7 +44,7 @@ public class RegisterFrame extends MyJFrame{
         ImageIcon icon = new ImageIcon("src/main/resources/pic/Login_top.gif");
         // 添加top图片
         lblTop = new JLabel(icon);
-        lblTop.setBounds(0,0,431,53);
+        lblTop.setBounds(0,0,431,54);
         // 用户名标签
         lblUsername = new JLabel("用户名");
         lblUsername.setHorizontalAlignment(JLabel.RIGHT);
