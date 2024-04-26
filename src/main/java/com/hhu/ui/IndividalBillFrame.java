@@ -37,7 +37,7 @@ public class IndividalBillFrame extends JFrame  implements ActionListener {
     public IndividalBillFrame()
     {
         setTitle("散客开单");
-        setIconImage(Toolkit.getDefaultToolkit().getImage("Source/个人.png"));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(""));
         setSize(595,650);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(null);
