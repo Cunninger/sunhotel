@@ -39,10 +39,11 @@ public class IndividalBillFrame extends JFrame  implements ActionListener {
         setTitle("散客开单");
         setIconImage(Toolkit.getDefaultToolkit().getImage(""));
         setSize(595,650);
+//        setSize(900,650);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(null);
 
-        font = new Font("微软雅黑",Font.PLAIN,20);
+        font = new Font("微软雅黑",Font.PLAIN,18);
 
         JLabel topLabel = new JLabel("开单信息");
         topLabel.setFont(font);
@@ -59,7 +60,7 @@ public class IndividalBillFrame extends JFrame  implements ActionListener {
         createJLabel("证件类型:",18,70,53,30);
 
         idType = new JComboBox<>();
-        idType.setBounds(73,70,80,25);
+        idType.setBounds(70,70,80,25);
         add(idType);
 
         createJLabel("证件编码:",182,70,53,30);
