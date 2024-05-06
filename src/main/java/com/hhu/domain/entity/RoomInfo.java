@@ -12,6 +12,7 @@ public class RoomInfo {
     private Integer indiMark;//开单标记
     private Integer delMark;
     //
+    //
 
     public Long getPk() {
         return pk;
