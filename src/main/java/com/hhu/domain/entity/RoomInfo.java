@@ -11,6 +11,7 @@ public class RoomInfo {
     private Integer stateTime;//状态计时
     private Integer indiMark;//开单标记
     private Integer delMark;
+    //
 
     public Long getPk() {
         return pk;
