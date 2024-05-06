@@ -1,4 +1,4 @@
-package com.hhu.ui;
+package com.hhu.ui.panel;
 
 import javax.swing.*;
 

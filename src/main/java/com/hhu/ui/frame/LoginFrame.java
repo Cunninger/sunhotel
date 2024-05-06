@@ -1,4 +1,4 @@
-package com.hhu.ui;
+package com.hhu.ui.frame;
 
 import com.hhu.awt.MyJFrame;
 import com.hhu.domain.entity.Pwd;

@@ -1,11 +1,9 @@
-package com.hhu.ui;
+package com.hhu.ui.panel;
 
 //import com.sun.deploy.panel.JreTableModel;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import java.awt.*;
 
 public class RightBottPanel extends JPanel {

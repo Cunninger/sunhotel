@@ -1,4 +1,4 @@
-package com.hhu.ui;
+package com.hhu.ui.panel;
 import com.hhu.awt.MyJButton;
 import com.hhu.domain.entity.Record;
 import com.hhu.domain.entity.RoomInfo;
@@ -9,6 +9,7 @@ import com.hhu.service.RoomInfoService;
 import com.hhu.service.RoomTypeService;
 import com.hhu.service.Impl.RoomInfoServiceImpl;
 import com.hhu.service.Impl.RoomTypeServiceImpl;
+import com.hhu.ui.frame.sankeFrame;
 import com.hhu.util.DateUtils;
 import com.hhu.util.Windows;
 

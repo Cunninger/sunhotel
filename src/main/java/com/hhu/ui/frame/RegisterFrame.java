@@ -1,4 +1,4 @@
-package com.hhu.ui;
+package com.hhu.ui.frame;
 
 /**
  * 功能：

@@ -1,4 +1,4 @@
-package com.hhu.ui;
+package com.hhu.ui.frame;
 
 import com.hhu.awt.MyJButton;
 import com.hhu.awt.MyJFrame;
@@ -11,13 +11,15 @@ import com.hhu.domain.entity.RoomType;
 import com.hhu.service.Impl.RoomInfoServiceImpl;
 import com.hhu.service.Impl.RoomTypeServiceImpl;
 import com.hhu.service.RoomTypeService;
+import com.hhu.ui.panel.LeftBottPanel;
+import com.hhu.ui.panel.LeftTopPanel;
+import com.hhu.ui.panel.RightBottPanel;
+import com.hhu.ui.panel.RightTopPanel;
 import com.hhu.util.Windows;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
 import com.hhu.service.RoomInfoService;
@@ -101,7 +103,7 @@ public class MainFrame extends MyJFrame {
      */
     private void buildSpaneMain () throws Exception {
 
-        jp1 = new LeftTopPanel ();		//这四个面板为功能接口//////////////
+        jp1 = new LeftTopPanel();		//这四个面板为功能接口//////////////
         jp2 = new LeftBottPanel();		//左下面板		快速通道
         jp3 = new RightTopPanel();        ///////////////////////////////
         jp4 = new RightBottPanel();		//右下面板		消费信息表
