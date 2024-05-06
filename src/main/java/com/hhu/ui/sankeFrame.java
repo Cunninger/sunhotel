@@ -7,7 +7,6 @@ import com.hhu.service.Impl.LiveinServiceImpl;
 import com.hhu.service.LiveinService;
 import com.hhu.service.RoomInfoService;
 import com.hhu.service.Impl.RoomInfoServiceImpl;
-import com.hhu.util.ClassEnumeration;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -489,15 +488,14 @@ public class sankeFrame extends JFrame  implements ActionListener {
             public void mouseReleased(MouseEvent e) {
                 livein.setChkNo(String.valueOf(new Date().getTime()));
                 livein.setChkTime( LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-                livein.setUserId("123");//TODO
-                //livein.setStatemark("已结算");
+                livein.setUserId("123");
+                livein.setStatemark("已结算");
 
                 try {
                     for (String roomInfoId:billRooms)
                         roomInfoService.updateByState(roomInfoId,"占用");
                     liveinService.insert(livein);
                     setVisible(false);
-                    ClassEnumeration.mainFrame =new MainFrame();
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
