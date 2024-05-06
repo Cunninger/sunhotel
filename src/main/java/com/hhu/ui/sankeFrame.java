@@ -550,18 +550,11 @@ public class sankeFrame extends JFrame  implements ActionListener {
     }
 
 
-    // 使用示例
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
     }
 
-    // 测试页面
-    public static void main(String[] args) {
-
-        //new IndividalBillFrame(new RoomInfo());
-    }
 
 }
