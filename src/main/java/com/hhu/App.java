@@ -1,6 +1,8 @@
 package com.hhu;
 
 import com.hhu.ui.LoginFrame;
+import com.hhu.ui.MainFrame;
+import com.hhu.util.ClassEnumeration;
 
 /**
  * Hello world!
@@ -8,8 +10,7 @@ import com.hhu.ui.LoginFrame;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) throws Exception {
         new LoginFrame();
     }
 }

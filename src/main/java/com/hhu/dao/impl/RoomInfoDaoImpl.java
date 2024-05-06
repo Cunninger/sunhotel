@@ -30,6 +30,12 @@ public class RoomInfoDaoImpl implements RoomInfoDao {
     }
 
     @Override
+    public void updateByState(String roomInfoId, String state) {
+        String sql = "update roominfo set state = ? where id = ?";
+        JDBCUtil.update(sql,state,roomInfoId);
+    }
+
+    @Override
     public void batchDelete(Long[] pks) throws Exception {
 
     }

@@ -13,4 +13,17 @@ public class RoomInfoServiceImpl implements RoomInfoService {
     public List<RoomInfo> getAll() throws Exception {
         return roomInfoDao.selectAll();
     }
+
+    @Override
+    public void updateByState(String roomInfoId, String state) {
+        roomInfoDao.updateByState(roomInfoId, state);
+    }
+
+    @Override
+    public List<RoomInfo> selectAll() throws Exception {
+
+        return   roomInfoDao.selectAll();
+    }
+
+
 }

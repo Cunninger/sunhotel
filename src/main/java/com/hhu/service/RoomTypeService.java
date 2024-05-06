@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface RoomTypeService {
     List<RoomType> getAll() throws Exception;
+
+    List<RoomType> selectAll() throws Exception;
 }

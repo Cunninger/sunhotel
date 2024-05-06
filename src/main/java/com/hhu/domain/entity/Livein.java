@@ -1,10 +1,13 @@
 package com.hhu.domain.entity;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Livein {
     private BigDecimal pk= BigDecimal.valueOf(System.currentTimeMillis());
-    private String inNo;
+    private String inNo=String.valueOf(new Date().getTime());
     private String rNo;
     private String rTypeId;
     private String mainRoom;
@@ -20,7 +23,8 @@ public class Livein {
     private String zjNo;
     private String address;
     private Integer renshu;
-    private String inTime;
+    private String inTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
     private Double account;
     private Integer days;
     private Double foregift;
@@ -30,9 +34,8 @@ public class Livein {
     private String chkTime;
     private String userId;
     private String statemark;
-    private Integer cluemark;
-    private Integer delmark;
-
+    private Integer cluemark=0;
+    private Integer delmark=0;
     public Livein(String inNo, String rNo, String rTypeId, String mainRoom,String mainPk, String cTypeId, String cName, String cJp, String sex, String zjType, String zjNo, String address, Integer renshu, Double account, Integer days, Double foregift, String remark, String mId, String chkNo, String chkTime, String userId, String statemark, Integer cluemark, Integer delmark) {
         this.inNo = inNo;
         this.rNo = rNo;

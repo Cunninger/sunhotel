@@ -2,6 +2,15 @@ package com.hhu.ui;
 
 import com.hhu.awt.MyJButton;
 import com.hhu.awt.MyJFrame;
+import com.hhu.domain.entity.RoomInfo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.hhu.domain.entity.RoomType;
+import com.hhu.service.Impl.RoomInfoServiceImpl;
+import com.hhu.service.Impl.RoomTypeServiceImpl;
+import com.hhu.service.RoomTypeService;
 import com.hhu.util.Windows;
 
 import javax.swing.*;
@@ -11,20 +20,27 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
-
+import com.hhu.service.RoomInfoService;
 public class MainFrame extends MyJFrame {
     private static int x,y,width,height;
     private JToolBar jToolBar;//工具栏
     private JPanel panelMain,jp1,jp2,jp3,jp4,bott;//面板
     private JSplitPane spaneLeft,spaneRight,spaneMain;//分割面板
     private static Map<Integer,String[]> toolbars = new HashMap<>();//保存菜单项
+    // 去数据库查roomInfoList，定义为全局变量
+    private List<RoomInfo> roomInfoList = new ArrayList<>();
+    private List<RoomType> roomTypeList = new ArrayList<>();
+    private RoomInfoService roomInfoService = new RoomInfoServiceImpl();
+    private RoomTypeService roomTypeService = new RoomTypeServiceImpl();
+    private RoomInfo roomInfo = new RoomInfo();
+    private RoomType roomType = new RoomType();
+
     static {
         // 计算窗口位置和大小
         width = 1020;
         height = 740;
-        // TODO 我这里是直接new   Windows 对象,不知道还是把Windows设为静态类？
-        x = new Windows().x - width / 2;
-        y = new Windows().y - height / 2;
+        x = Windows.x - width / 2;
+        y = Windows.y - height / 2;
         //定义菜单项
         toolbars.put(1,new String[]{"散客开单","toolbar/m01.gif"});
         toolbars.put(2,new String[]{"团体开单","toolbar/m02.gif"});
@@ -35,7 +51,7 @@ public class MainFrame extends MyJFrame {
         toolbars.put(7,new String[]{"关于我们","toolbar/m07.gif"});
         toolbars.put(8,new String[]{"退出系统","toolbar/m10.gif"});
     }
-    public MainFrame(){
+    public MainFrame() throws Exception {
         super("阳光酒店管理系统 V2004", x,y,width,height);
         //制作工具栏
         buildToolBar();
@@ -48,43 +64,46 @@ public class MainFrame extends MyJFrame {
         panelMain.add ("North", jToolBar);	//加入工具栏
         panelMain.add ("South", bott);			//加入窗口底端信息框
         panelMain.add ("Center", spaneMain);	//加入分割面板
+        this.setContentPane (panelMain);
 
-        // 添加散客开单事件
-        jToolBar.getComponent(0).addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-               new IndividalBillFrame();
-            }
-        });
+//         初始化房间信息
+//         从数据库中获取房间信息
+         roomInfoList = roomInfoService.selectAll();
+//         从数据库中获取房间类型信息
+         roomTypeList = roomTypeService.selectAll();
+
+
+
+
 
         this.setContentPane (panelMain);
 
-       this.setVisible(true);
+        this.setVisible(true);
     }
 
-    /**x
+
+    /**
      * 初始化工具栏
      */
     public void buildToolBar(){
         jToolBar = new JToolBar();
         for(String[] toolbar : toolbars.values()){
-
-            MyJButton myJButton = new MyJButton(toolbar[0], new Windows().IMGPATH+toolbar[1]);
+            MyJButton myJButton = new MyJButton(toolbar[0], Windows.IMGPATH+toolbar[1]);
             jToolBar.add(myJButton);
         }
         jToolBar.setBounds(0,0,width,90);
         //设置工具栏不可浮动
         jToolBar.setFloatable(false);
     }
+
     /**
      *  制作主面板
      */
-    private void buildSpaneMain () {
+    private void buildSpaneMain () throws Exception {
 
         jp1 = new LeftTopPanel ();		//这四个面板为功能接口//////////////
         jp2 = new LeftBottPanel();		//左下面板		快速通道
-        jp3 = new RightTopPanel();		///////////////////////////////
+        jp3 = new RightTopPanel();        ///////////////////////////////
         jp4 = new RightBottPanel();		//右下面板		消费信息表
 
         //声名分割面板
@@ -136,4 +155,5 @@ public class MainFrame extends MyJFrame {
         bott.add (lbB);
         bott.add (lb2);
     }
+
 }

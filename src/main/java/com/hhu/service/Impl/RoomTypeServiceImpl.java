@@ -13,4 +13,9 @@ public class RoomTypeServiceImpl implements RoomTypeService {
     public List<RoomType> getAll() throws Exception {
         return roomTypeDao.selectAll();
     }
+
+    @Override
+    public List<RoomType> selectAll() throws Exception {
+        return roomTypeDao.selectAll();
+    }
 }
