@@ -13,6 +13,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -74,11 +75,7 @@ public class sankeFrame extends JFrame implements ActionListener {
         add(topLabel);
 
 
-        livein.setrNo(roomInfo.getState());
-        livein.setMainRoom(roomInfo.getState());
-        livein.setMainPk(String.valueOf(livein.getPk()));
-
-        livein.setcTypeId("666");
+        livein.setMainPk(String.valueOf(roomType.getPk().longValue()));
         livein.setmId("123456");
         livein.setStatemark("已结算");
 
@@ -158,7 +155,7 @@ public class sankeFrame extends JFrame implements ActionListener {
         guestType.addItem("团体组织");
         guestType.addItem("内部人事");
         //TODO
-        livein.setrTypeId("普通宾客");
+        livein.setrTypeId(roomType.getrType());
         guestType.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -275,7 +272,7 @@ public class sankeFrame extends JFrame implements ActionListener {
         cashPledge.setBounds(480, 230, 80, 30);
         add(cashPledge);
 
-        //-----------------------------------------------------------------------------
+
 
         createJLabel("追加房间", 18, 280, 53, 30);
 
@@ -318,7 +315,6 @@ public class sankeFrame extends JFrame implements ActionListener {
         List<String> billRooms = new ArrayList<>();
         billRooms.add(roomInfo.getId());
         billRoomList = new JList<>(billRooms.toArray(new String[0]));
-        ;
         billRoomList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -326,6 +322,7 @@ public class sankeFrame extends JFrame implements ActionListener {
 
             }
         });
+
 
         JScrollPane jScrollPane2 = new JScrollPane(billRoomList);
         jScrollPane2.setBounds(360, 350, 200, 200);
@@ -367,6 +364,8 @@ public class sankeFrame extends JFrame implements ActionListener {
                         Collections.sort(emptyRooms);
                         billRooms.remove((int) rightIndex);
                         billRoomList.setListData(billRooms.toArray(new String[0]));
+                        ListModel<String> model = billRoomList.getModel();
+
                         emptyRoomList.setListData(emptyRooms.toArray(new String[0]));
 
 
@@ -389,11 +388,23 @@ public class sankeFrame extends JFrame implements ActionListener {
                 livein.setChkTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 livein.setUserId(pwd.getUserId());
                 livein.setStatemark("已结算");
+                // r_no
+                livein.setrNo(billRooms.get(0));
+                livein.setcTypeId("SYSMARK");
 
+                livein.setMainRoom(roomInfo.getId());
                 try {
-                    for (String roomInfoId : billRooms)
+                    for (String roomInfoId : billRooms) {
+                        System.out.println(roomInfoId);
                         roomInfoService.updateByState(roomInfoId, "占用");
-                    liveinService.insert(livein);
+                        Livein liveinTemp = new Livein();
+                        liveinTemp = livein;
+                        // 主键设置为随机数
+                        liveinTemp.setPk(BigDecimal.valueOf((long) (Math.random() * 1000)));
+                        liveinTemp.setrNo(roomInfoId);
+                        liveinService.insert(liveinTemp);
+                    }
+
                     setVisible(false);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
@@ -425,9 +436,7 @@ public class sankeFrame extends JFrame implements ActionListener {
         setVisible(true);
         setResizable(false);
         setLocationRelativeTo(null);
-/*
-        updateRoomInfo();
-        updateJLists();*/
+
     }
 
 
@@ -442,8 +451,11 @@ public class sankeFrame extends JFrame implements ActionListener {
         jLabel.setHorizontalAlignment(JLabel.CENTER);
         jLabel.setBounds(x, y, width, height);
         add(jLabel);
+
         return jLabel;
     }
+
+
 
 
     @Override

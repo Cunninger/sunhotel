@@ -143,11 +143,9 @@ public class RightTopPanel extends JPanel  {
             }
 
             RoomType roomType = roomTypeList.stream().filter(item -> item.getId().equals(roomInfo.getrTypeId())).findFirst().get();
-
+            System.out.println(roomType);
             switch (roomInfo.getState()){
                 case "可供": {
-                    // 查找操作员，可以日志表中记录的最新信息中找出operator
-
                     Record record = new Record();
                     record.setTime(DateUtils.date2String(new Date()));
                     record.setOperator(pwd.getUserId());

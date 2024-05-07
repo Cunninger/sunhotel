@@ -1,6 +1,7 @@
 package com.hhu;
 
 import com.hhu.ui.frame.LoginFrame;
+import com.hhu.ui.frame.MainFrame;
 
 /**
  * Hello world!

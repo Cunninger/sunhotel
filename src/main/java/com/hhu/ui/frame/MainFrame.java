@@ -145,7 +145,7 @@ public class MainFrame extends MyJFrame {
     private void buildBott () {
         JLabel lb1, lb2,lbA,lbB;
         lb1 = new JLabel("     酒 店 宾 馆 管 理 系 统    ");
-        lb2 = new JLabel("    当前操作员 :  " +"" + "                  ");
+        lb2 = new JLabel("    当前操作员 :  " +"" +pwd.getUserId());
         lbA = new JLabel( "请选择功能项 ...   　　　　　　　　　　　　　　　　　　　　");
         lbB	= new JLabel(" 酒 店 宾 馆 管 理 系 统 -    【猿来入此】修订版         ");
         //加外框线
