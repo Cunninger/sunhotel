@@ -6,7 +6,7 @@ import com.hhu.util.JDBCUtil;
 import java.sql.ResultSet;
 import java.util.List;
 
-public class RecodDaoImpl implements RecordDao{
+public class RecordDaoImpl implements RecordDao{
     @Override
     public void insert(Record record) throws Exception {
         String sql = "insert into record values(?,?,?,?,?,?)";

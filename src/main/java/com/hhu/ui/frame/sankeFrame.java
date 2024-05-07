@@ -1,6 +1,7 @@
 package com.hhu.ui.frame;
 
 import com.hhu.domain.entity.Livein;
+import com.hhu.domain.entity.Pwd;
 import com.hhu.domain.entity.RoomInfo;
 import com.hhu.domain.entity.RoomType;
 import com.hhu.service.Impl.LiveinServiceImpl;
@@ -55,7 +56,7 @@ public class sankeFrame extends JFrame implements ActionListener {
     private Livein livein = new Livein();
     private List<Livein> liveinList = new ArrayList<>();
 
-    public sankeFrame(List<RoomInfo> roomInfoList, RoomType roomType, RoomInfo roomInfo) {
+    public sankeFrame(List<RoomInfo> roomInfoList, RoomType roomType, RoomInfo roomInfo, Pwd pwd) {
         setTitle("散客开单");
         setIconImage(Toolkit.getDefaultToolkit().getImage(""));
         setSize(600, 650);
@@ -183,6 +184,7 @@ public class sankeFrame extends JFrame implements ActionListener {
         createJLabel("宾客人数:", 428, 110, 65, 30);
 
         guestCount = new JTextField("1");
+        livein.setRenshu(1);  // 设置renshu默认值为1
         guestCount.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 validate();
@@ -211,6 +213,7 @@ public class sankeFrame extends JFrame implements ActionListener {
                 }
             }
         });
+
 
         guestCount.setBounds(483, 110, 80, 25);
         add(guestCount);
@@ -384,7 +387,7 @@ public class sankeFrame extends JFrame implements ActionListener {
             public void mouseReleased(MouseEvent e) {
                 livein.setChkNo(String.valueOf(new Date().getTime()));
                 livein.setChkTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-                livein.setUserId("123");
+                livein.setUserId(pwd.getUserId());
                 livein.setStatemark("已结算");
 
                 try {

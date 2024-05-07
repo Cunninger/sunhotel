@@ -2,6 +2,7 @@ package com.hhu.ui.frame;
 
 import com.hhu.awt.MyJButton;
 import com.hhu.awt.MyJFrame;
+import com.hhu.domain.entity.Pwd;
 import com.hhu.domain.entity.RoomInfo;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 import com.hhu.service.RoomInfoService;
+import com.hhu.domain.entity.Pwd;
 public class MainFrame extends MyJFrame {
     private static int x,y,width,height;
     private JToolBar jToolBar;//工具栏
@@ -37,6 +39,7 @@ public class MainFrame extends MyJFrame {
     private RoomInfo roomInfo = new RoomInfo();
     private RoomType roomType = new RoomType();
 
+    private Pwd pwd = new Pwd();
     static {
         // 计算窗口位置和大小
         width = 1020;
@@ -53,8 +56,9 @@ public class MainFrame extends MyJFrame {
         toolbars.put(7,new String[]{"关于我们","toolbar/m07.gif"});
         toolbars.put(8,new String[]{"退出系统","toolbar/m10.gif"});
     }
-    public MainFrame() throws Exception {
+    public MainFrame(Pwd pwd) throws Exception {
         super("阳光酒店管理系统 V2004", x,y,width,height);
+        this.pwd = pwd;
         //制作工具栏
         buildToolBar();
         //制作分割面板
@@ -73,7 +77,6 @@ public class MainFrame extends MyJFrame {
          roomInfoList = roomInfoService.selectAll();
 //         从数据库中获取房间类型信息
          roomTypeList = roomTypeService.selectAll();
-
 
 
 
@@ -105,7 +108,7 @@ public class MainFrame extends MyJFrame {
 
         jp1 = new LeftTopPanel();		//这四个面板为功能接口//////////////
         jp2 = new LeftBottPanel();		//左下面板		快速通道
-        jp3 = new RightTopPanel();        ///////////////////////////////
+        jp3 = new RightTopPanel(pwd);        ///////////////////////////////
         jp4 = new RightBottPanel();		//右下面板		消费信息表
 
         //声名分割面板

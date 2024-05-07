@@ -24,6 +24,7 @@ public class LoginFrame extends MyJFrame{
     private JPasswordField txtPwd;
     private JButton btnOk,btnCancel,btnRegister;
     private static Integer screenWidth,screenHeight,x,y;
+    private Pwd pwd = new Pwd();
     static {
         // 获取默认工具包
         Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -87,9 +88,11 @@ public class LoginFrame extends MyJFrame{
             String userId = txtUsername.getText();
             String password = txtPwd.getText();
             // 调用业务模型， 响应结果
-            Pwd pwd = new Pwd();
+
             try {
                Boolean flag = pwdService.login(userId,password);
+               pwd.setUserId(userId);
+               pwd.setPwd(password);
                if(flag){
                    System.out.println("登录成功");
                    //写日志
@@ -102,7 +105,7 @@ public class LoginFrame extends MyJFrame{
 
                      // 关闭当前窗口
                         dispose();
-                   new MainFrame();
+                   new MainFrame(pwd);
                }
                 } catch (Exception ex) {
                     String msg =  ex.getMessage();

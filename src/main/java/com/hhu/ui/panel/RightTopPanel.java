@@ -1,5 +1,6 @@
 package com.hhu.ui.panel;
 import com.hhu.awt.MyJButton;
+import com.hhu.domain.entity.Pwd;
 import com.hhu.domain.entity.Record;
 import com.hhu.domain.entity.RoomInfo;
 import com.hhu.domain.entity.RoomType;
@@ -30,8 +31,10 @@ public class RightTopPanel extends JPanel  {
     private JTabbedPane jTabbedPane;
     private java.util.List<RoomInfo> roomInfoList = new ArrayList<>();
     private List<RoomType> roomTypeList=new ArrayList<>();
-    public RightTopPanel() {
+    private Pwd pwd;
+    public RightTopPanel(Pwd pwd) {
         super(new BorderLayout());//创建一个边界布局面板
+        this.pwd = pwd;
         //房间类型选项卡
         jTabbedPane = new JTabbedPane();
         //制作标签栏
@@ -139,18 +142,15 @@ public class RightTopPanel extends JPanel  {
                 }
             }
 
-//            RoomType roomType = roomTypeList.stream()
-//                    .filter(item -> item.getId().equals(roomInfo.getId()))
-//                    .findFirst()
-//                    .get();
             RoomType roomType = roomTypeList.stream().filter(item -> item.getId().equals(roomInfo.getrTypeId())).findFirst().get();
 
             switch (roomInfo.getState()){
                 case "可供": {
+                    // 查找操作员，可以日志表中记录的最新信息中找出operator
 
                     Record record = new Record();
                     record.setTime(DateUtils.date2String(new Date()));
-                    record.setOperator("none");
+                    record.setOperator(pwd.getUserId());
                     record.setContent("none" +"在"+record.getTime()+ "打开散客开单");
                     record.setBrief("散客开单");
                     try {
@@ -159,8 +159,8 @@ public class RightTopPanel extends JPanel  {
                         throw new RuntimeException(ex);
                     }
 
-                    sankeFrame individalBillFrame = new sankeFrame(temp,roomType,roomInfo);
-                    individalBillFrame.setVisible(true);
+                    sankeFrame sanke = new sankeFrame(temp,roomType,roomInfo,pwd);
+                    sanke.setVisible(true);
 
                     break;
                 }
