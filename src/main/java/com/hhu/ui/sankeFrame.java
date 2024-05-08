@@ -492,9 +492,17 @@ public class sankeFrame extends JFrame  implements ActionListener {
                 livein.setStatemark("已结算");
 
                 try {
-                    for (String roomInfoId:billRooms)
-                        roomInfoService.updateByState(roomInfoId,"占用");
-                    liveinService.insert(livein);
+                    for (String roomInfoId : billRooms) {
+                        System.out.println(roomInfoId);
+                        roomInfoService.updateByState(roomInfoId, "占用");
+                        Livein liveinTemp = new Livein();
+                        liveinTemp = livein;
+                      
+                        liveinTemp.setPk(BigDecimal.valueOf((long) (Math.random() * 1000)));
+                        liveinTemp.setrNo(roomInfoId);
+                        liveinService.insert(liveinTemp);
+                    }
+
                     setVisible(false);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
