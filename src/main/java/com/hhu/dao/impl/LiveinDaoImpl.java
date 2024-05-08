@@ -104,7 +104,7 @@ public class LiveinDaoImpl implements LiveinDao {
 
     @Override
     public List<Livein> selectBySelective(Livein livein) throws Exception {
-        return List.of();
+        return null;
     }
 
 
